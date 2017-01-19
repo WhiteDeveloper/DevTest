@@ -1,0 +1,83 @@
+<?php
+		ini_set ("session.use_trans_sid", true);
+		session_start();
+		if (isset($_SESSION['id']) || (isset($_COOKIE['login']) && isset($_COOKIE['pass']))) 
+		{
+			header('Location: /filework.html');
+		}
+	?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title>Регистрация</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div id="content">
+		<div class="field">
+		<form action="index.php" method="POST" class="Form">
+			<h3>Регистрация</h3>
+			<h3 class="Error">ОШИБКА ПРИ ВВОДЕ ДАННЫХ</h3>
+			<fieldset>
+			<p><label>Логин:</label><input type="text" name="login" > </p>
+			<p><label>E-mail:</label><input type="text" name="email" > </p>
+			<p><label>Пароль:</label><input type="password" name="pass1" > </p>
+			<p><label>Повторите пароль:</label><input type="password" name="pass2"> </p>
+			<p><label>Имя:</label><input type="text" name="firstName" > </p>
+			<p><label>Фамилия:</label><input type="text" name="lastName" > </p>
+			<p><label>Пол:</label>
+				<input type="radio" name="sex" value="m"> Мужской
+				<input type="radio" name="sex" value="f"> Женский <br />
+			</p>
+			
+			<p><label>Дата рождения:</label></p>
+			<div class="BirthDate">
+				<p>
+					<select name="day">
+							<script type="text/javascript">
+							document.write("<option value=\""+ 0 +"\">"+ "День" +"</option>");
+								for(nDay=1; nDay<=31; nDay++)  
+							  		document.write("<option value=\""+nDay+"\">"+nDay+"</option>");
+							</script>
+						</select>
+					<select name="month">
+							<script type="text/javascript">
+							var month=new Array(13);
+							month[0]="Месяц";
+							month[1]="Январь";
+							month[2]="Февраль";
+							month[3]="Март";
+							month[4]="Апрель";
+							month[5]="Май";
+							month[6]="Июнь";
+							month[7]="Июль";
+							month[8]="Август";
+							month[9]="Сентябрь";
+							month[10]="Октябрь";
+							month[11]="Ноябрь";
+							month[12]="Декабрь"; 
+							  	for(nMonth=0; nMonth<13; nMonth++)  
+							  		document.write("<option value=\""+nMonth+"\">"+month[nMonth]+"</option>");
+  							</script>
+						</select>
+					<select name="year" >
+							<script type="text/javascript"> 
+								var date = new Date();
+								document.write("<option value=\""+ 0 +"\">"+ "Год" +"</option>");
+							  	for(nYear=1950; nYear<=date.getFullYear(); nYear++)  
+							  		document.write("<option value=\""+nYear+"\">"+nYear+"</option>");  
+  							</script>
+						</select>
+				</p>
+				</div>
+				<br />
+				<hr />
+			<p><input type="submit" class="Btn" name="OK" value="Зарегистрироваться"></p>
+			</fieldset>
+			<p class="Info">Уже есть аккаут? <a href="index.html">Авторизоваться</a></p>
+		</form>
+		</div>
+	</div>
+</body>
+</html>
